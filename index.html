@@ -1078,68 +1078,116 @@ and operational technology.
 </section>
 
 <!-- ================= Consent Management ================= -->
-//consent form start
-<!DOCTYPE html>
-<html lang="english">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consent Widget</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+
+<section class="section" style="background:#f5f7fa;">
+
+<div class="container">
+
+<h2 class="section-title">
+Manage Your Consent Preferences
+</h2>
+
+<p class="section-subtitle">
+Review and manage how your personal data is collected and used,
+in line with applicable data privacy regulations.
+</p>
+
+<div style="display:flex; justify-content:center; margin-top:50px;">
+
   <div class="widget-container">
-   	<div class="header-language-wrapper-container ">
-		<div id="language-wrapper" style="display: none;">
-		    <div class="dropdown">
-			<label for="langSelect">Language Preference <br></label>
-			<select id="langSelect"></select>
-			</div>
-		</div>  
-	</div>
+    <div class="header-language-wrapper-container">
+      <div id="language-wrapper" style="display: none;">
+        <div class="dropdown">
+          <label for="langSelect">Language Preference <br></label>
+          <select id="langSelect"></select>
+        </div>
+      </div>
+    </div>
     <div class="header-container">
       <div class="logo-area" id="logo-area"></div>
     </div>
-    	<div class ="preview-statements">
-        <div id="consent-root">Loading consent form...</div>
-        <div id="error-message" class="error-message"></div>
-        <div id="toast"></div>
-      </div> 
-      <div class="full-width-footer-border"></div>
-      <div class="button-group" id="button-group">
-          <button class="cancel" id="cancelBtn" style="display: none;">Cancel</button>
-          <button class="submit" id="submitBtn" style="display: none;">Submit</button>
+
+    <!-- Data Principal details: feeds dataPrincipalId in the consent config -->
+    <div id="dp-details" style="
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:16px;
+      margin-bottom:20px;
+      padding-bottom:20px;
+      border-bottom:2px solid #EBEDEE;
+    ">
+      <div>
+        <label for="dpFirstName" style="display:block; font-weight:bold; font-size:12px; color:#606190; margin-bottom:6px;">First Name</label>
+        <input type="text" id="dpFirstName" placeholder="First name" style="
+          width:100%; box-sizing:border-box; padding:8px 10px;
+          border:1px solid #E2E2FB; border-radius:2px; font-size:12px;
+          color:#43436C; background:#FAFBFF;">
       </div>
-    
+      <div>
+        <label for="dpLastName" style="display:block; font-weight:bold; font-size:12px; color:#606190; margin-bottom:6px;">Last Name</label>
+        <input type="text" id="dpLastName" placeholder="Last name" style="
+          width:100%; box-sizing:border-box; padding:8px 10px;
+          border:1px solid #E2E2FB; border-radius:2px; font-size:12px;
+          color:#43436C; background:#FAFBFF;">
+      </div>
+      <div>
+        <label for="dpEmail" style="display:block; font-weight:bold; font-size:12px; color:#606190; margin-bottom:6px;">Email</label>
+        <input type="email" id="dpEmail" placeholder="you@example.com" style="
+          width:100%; box-sizing:border-box; padding:8px 10px;
+          border:1px solid #E2E2FB; border-radius:2px; font-size:12px;
+          color:#43436C; background:#FAFBFF;">
+      </div>
+    </div>
+
+    <div class="preview-statements">
+      <div id="consent-root">Loading consent form...</div>
+      <div id="error-message" class="error-message"></div>
+      <div id="toast"></div>
+    </div>
+    <div class="full-width-footer-border"></div>
+    <div class="button-group" id="button-group">
+      <button class="cancel" id="cancelBtn" style="display: none;">Cancel</button>
+      <button class="submit" id="submitBtn" style="display: none;">Submit</button>
+    </div>
   </div>
-  <script>
-    // Configuration options for the consent widget
-    window.consentWidgetConfig = {
-      consentFormId: "90f85b5a-5839-4fdf-8053-cbd2f61982b8",
-      apiUrl: "https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/getConsentFormById",
-      submitApiUrl: "https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/createOrUpdateConsent",
-      tenantToken: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjMDE0NTczNi01MmIyLTRkMjEtOTQ2My0zZDI2NTQyMDQzZjciLCJwcm9kdWN0IjoiQ29uc2VudCBNYW5hZ21lbnQiLCJzY29wZSI6ImFjY2VzcyIsImlhdCI6MTc4MzAwNTQ0NCwiZXhwIjoxNzgzMDkxODQ0fQ.A2D9s_Xy80Wtip6g0a8CjSFmZyQiOAl-tN-r-EYQTb0",
-      signatureServiceUrl: "https://starhealth.pre-dataprivacy.com/cpm-sign",
-      dataPrincipalId: [
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+  // Configuration options for the consent widget
+  window.consentWidgetConfig = {
+    consentFormId: "645af12a-cdd0-4227-a960-2c5111127034",
+    apiUrl: "https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/getConsentFormById",
+    submitApiUrl: "https://starhealth.pre-dataprivacy.com/cpm-api/open-api/v1/consent/v1/createOrUpdateConsent",
+    tenantToken: "Bearer bearer",
+    signatureServiceUrl: "https://starhealth.pre-dataprivacy.com/cpm-sign",
+    dataPrincipalId: [
       { key: "firstName", value: "" },
       { key: "lastName", value: "" },
       { key: "email", value: "" }
     ],
-      ],
-      customAttributes: {
-        "ticketID": "",
-        "registration ID": ""
-      },
-      showButtons: true,
-      showLanguageDropdown: true,
-      enableCheckboxes: true,
-      enableRadioButtons: true,
-      enableDropdowns: true,
-      receivedType:"WEB"
-    };
+    customAttributes: {
+      "ticketID": "",
+      "registration ID": ""
+    },
+    showButtons: true,
+    showLanguageDropdown: true,
+    enableCheckboxes: true,
+    enableRadioButtons: true,
+    enableDropdowns: true,
+    receivedType: "WEB"
+  };
+</script>
 
-  // Function for Android WebView integration to dynamically set tenant token and data principal ID
-  // Called from Android native code before loading the consent widget
+<script>
+  // Keep dataPrincipalId in sync with the First Name / Last Name / Email
+  // fields above the widget. setDataPrincipalIdList() in script.js reads
+  // window.consentWidgetConfig.dataPrincipalId fresh at submit time, so
+  // updating it here on every keystroke is enough to feed through.
   (function () {
     function updateDataPrincipalId() {
       var firstName = document.getElementById("dpFirstName")?.value.trim() || "";
@@ -1160,60 +1208,9 @@ and operational technology.
 
     updateDataPrincipalId();
   })();
-  </script>
-  
-
-<!--
-  Optional: Use custom buttons if the parent application
-  wants to control Consent Form submission and reset actions.
-
-  Note:
-  - Set `showButtons: false` in the widget configuration.
-  - Submit button calls `consentWidget.submit()`.
-  - Clear button calls `consentWidget.reset()`.
--->
-
-<!--Example-->
-
-<!--
-<button id="parentClearBtn" style="padding:10px 16px; background:#dc2626; color:white; border:none; border-radius:6px;">
-  Clear Consent
-</button>
-<button id="parentSubmitBtn" style="padding:10px 16px; background:#16a34a; color:white; border:none; border-radius:6px;">
-  Submit Consent
-</button>
-
-<script>
-  document.getElementById("parentSubmitBtn").addEventListener("click", async () => {
-    if (!window.consentWidget) return;
-
-    const result = await window.consentWidget.submit();
-
-    console.log("Submit result:", result);
-
-    if (result.success) {
-      // navigate next page here
-      // window.location.href = "/next-page";
-    }
-  });
-
-  document.getElementById("parentClearBtn").addEventListener("click", () => {
-    if (!window.consentWidget) return;
-
-    window.consentWidget.reset();
-  });
 </script>
--->
-<!-- 
-  Static script loading for non-Android environments
-  For Android: Comment out this line and use window.updateConsentConfig() to load script dynamically
-  SRI (Subresource Integrity) with SHA-384 hash ensures script integrity
-  Replace HASH_VALUE_HERE with actual hash generated from script.js
-  Note: SRI may not work with file:// protocol in Android WebView - test thoroughly
--->
 <script src="script.js"></script>
-</body>
-</html>
+
 <!-- ================= Contact ================= -->
 
 <section
